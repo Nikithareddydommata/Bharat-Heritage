@@ -1,0 +1,47 @@
+{
+  "entities": {
+    "HeritageSite": {
+      "title": "Heritage Site",
+      "description": "A historical site in India.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "Name of the site" },
+        "description": { "type": "string", "description": "Short description" },
+        "history": { "type": "string", "description": "Detailed historical context" },
+        "location": {
+          "type": "object",
+          "properties": {
+            "lat": { "type": "number" },
+            "lng": { "type": "number" },
+            "address": { "type": "string" }
+          }
+        },
+        "images": { "type": "array", "items": { "type": "string" } },
+        "category": { "type": "string", "enum": ["Temple", "Fort", "Palace", "Monument", "Cave"] }
+      },
+      "required": ["name", "description", "location", "category"]
+    },
+    "ManuscriptTranslation": {
+      "title": "Manuscript Translation",
+      "description": "A translation of an ancient manuscript.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "UID of the user who translated it" },
+        "originalText": { "type": "string", "description": "Original text or image URL" },
+        "translatedText": { "type": "string", "description": "Translated text from AI" },
+        "timestamp": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "originalText", "translatedText", "timestamp"]
+    }
+  },
+  "firestore": {
+    "/heritage_sites/{siteId}": {
+      "schema": "HeritageSite",
+      "description": "Collection of Indian heritage sites."
+    },
+    "/translations/{translationId}": {
+      "schema": "ManuscriptTranslation",
+      "description": "User-saved manuscript translations."
+    }
+  }
+}

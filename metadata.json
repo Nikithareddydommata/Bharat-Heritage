@@ -1,0 +1,5 @@
+{
+  "name": "Bharat Heritage Explorer",
+  "description": "Discover India's rich heritage with site guides, location mapping, and an AI-powered manuscript translator.",
+  "requestFramePermissions": ["camera", "geolocation"]
+}
